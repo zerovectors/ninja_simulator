@@ -1,0 +1,608 @@
+local library = loadstring(game:HttpGet("https://pastebin.com/raw/AqZYACS7", true))()
+local mouse = game.Players.LocalPlayer:GetMouse();
+local UserInput = game:GetService("UserInputService")
+local farming = library:CreateWindow({
+  text = "Farming"
+})
+local character = library:CreateWindow({
+  text = "Character"
+})
+local teleports = library:CreateWindow({
+  text = "Teleports"
+})
+
+local miscellaneous = library:CreateWindow({
+  text = "Miscellaneous"
+})
+
+local settings = {
+  autofarm = false;
+  autosell = false;
+  autofarmcoins = false;
+  logs = false;
+  vis = false;
+}
+loadstring(game:HttpGet("https://pastebin.com/raw/xKbbAuc7"))() wait(.1)
+
+local credits = library:CreateWindow({text='Credits'})
+credits:AddLabel("Credits\nInori: Dragging\nwally: UI\nsmail: Ideas")
+
+farming:AddToggle("AutoFarm", function(state)
+  if settings.autofarm == false then
+    settings.autofarm = true
+    while wait() do
+      local tbl_main =
+      {
+            "swingKatana"
+      }
+      game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+      if settings.autofarm == false then
+        break
+      end
+    end
+  else
+    settings.autofarm = false
+  end
+end)
+
+farming:AddToggle("Auto Sell", function(state)
+  if settings.autosell == false then
+    settings.autosell = true
+    while wait() do
+      workspace.sellAreaCircles.sellAreaCircle.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+      if settings.autosell == false then
+        workspace.sellAreaCircles.sellAreaCircle.circleInner.CFrame = CFrame.new(77.014, 6.29789, -51.3384)
+        break
+      end
+    end
+  else
+    settings.autosell = false
+  end
+end)
+
+farming:AddToggle("Farm Coins and Chi", function(state)
+  if settings.autofarmcoins == false then
+    settings.autofarmcoins = true
+    local charpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    while wait() do
+      for i,v in pairs(workspace.spawnedCoins.Valley:GetChildren()) do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+      end
+      if settings.autofarmcoins == false then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = charpos
+        break
+      end
+    end
+  else
+    settings.autofarmcoins = false
+  end
+end)
+
+farming:AddToggle("Remove coin effects shit", function(state)
+  if state then
+    game.Players.LocalPlayer.PlayerGui.statEffectsGui.Enabled = false
+    if game.Players.LocalPlayer.PlayerGui.gameGui:FindFirstChild("maxNinjitsuMenu") then
+      game.Players.LocalPlayer.PlayerGui.gameGui.maxNinjitsuMenu.Parent = game.Players.LocalPlayer.PlayerGui
+    end
+  else
+    game.Players.LocalPlayer.PlayerGui.statEffectsGui.Enabled = true
+    game.Players.LocalPlayer.PlayerGui:WaitForChild("maxNinjitsuMenu").Parent = game.Players.LocalPlayer.PlayerGui.gameGui
+  end
+end)
+
+character:AddToggle("Super Speed", function(state)
+  game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = (state and 100 or 16)
+end)
+
+character:AddBox("WalkSpeed", function(object, focus)
+  if focus then
+      game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(object.Text) or 16
+  end
+end)
+
+character:AddToggle("Super Jump", function(state)
+  game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = (state and 100 or 50)
+end)
+
+character:AddBox("JumpPower", function(object, focus)
+  if focus then
+      game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = tonumber(object.Text) or 50
+  end
+end)
+
+character:AddButton("Reset", function()
+  game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0;
+end)
+
+teleports:AddLabel(" -- Teleport Islands --")
+
+local dropdown3;
+dropdown3 = teleports:AddDropdown({"Ground" ,"Enchanted Island", "Astral Island", "Mystical Island", "Space Island", "Tundra Island", "Eternal Island", "Sandstorm", "Thunderstorm", "Ancient Inferno Island", "Midnight Shadow Island", "Mythical Souls Island", "Winter Wonder Island", "Golden Master Island", "Dragon Legend Island", "Cybernetic Legends Island", "Skystorm Ultraus Island"}, function(a)
+if a == "Ground" then
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-25.5, 0.94, 65.4)
+  elseif a == "Enchanted Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Enchanted Island"].CFrame
+  elseif a == "Astral Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Astral Island"].CFrame
+  elseif a == "Mystical Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mystical Island"].CFrame
+  elseif a == "Space Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Space Island"].CFrame
+  elseif a == "Tundra Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Tundra Island"].CFrame
+  elseif a == "Eternal Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Eternal Island"].CFrame
+  elseif a == "Sandstorm" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Sandstorm"].CFrame
+  elseif a == "Thunderstorm" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Thunderstorm"].CFrame
+  elseif a == "Ancient Inferno Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Ancient Inferno Island"].CFrame
+  elseif a == "Midnight Shadow Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Midnight Shadow Island"].CFrame
+  elseif a == "Mythical Souls Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mythical Souls Island"].CFrame
+  elseif a == "Winter Wonder Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Winter Wonder Island"].CFrame
+  elseif a == "Golden Master Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Golden Master Island"].CFrame
+  elseif a == "Dragon Legend Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Dragon Legend Island"].CFrame
+  elseif a == "Cybernetic Legends Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Cybernetic Legends Island"].CFrame
+  elseif a == "Skystorm Ultraus Island" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Skystorm Ultraus Island"].CFrame
+  end
+end)
+
+teleports:AddButton("Unlock All Islands", function()
+  local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Enchanted Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Astral Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mystical Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Space Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Tundra Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Eternal Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Sandstorm"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Thunderstorm"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Ancient Inferno Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Midnight Shadow Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mythical Souls Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Winter Wonder Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Golden Master Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Dragon Legend Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Cybernetic Legends Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Skystorm Ultraus Island"].CFrame
+wait(.3)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+
+miscellaneous:AddLabel(" --Buy All Swords--")
+
+local dropdown;
+dropdown = miscellaneous:AddDropdown({"Buy all Swords Ground", "Buy all Swords Astral Island", "Buy all Swords Space Island", "Buy all Swords Tundra Island", "Buy all Swords Eternal Island", "Buy all Swords Sandstorm", "Buy all Swords Thunderstorm", "Buy all Swords Ancient Inferno Island", "Buy all Swords Midnight Shadow Island", "Buy all Swords Mythical Souls Island", "Buy all Swords Winter Wonder Island", "Buy all Swords Golden Master Island", "Buy all Swords Dragon Legend Island", "Buy all Swords Cybernetic Legends Island", "Buy all Swords Skystorm Ultraus Island"}, function(a)
+  if a == "Buy all Swords Ground" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Ground"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Astral Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Astral Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Space Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Space Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Tundra Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Tundra Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Eternal Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Eternal Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Sandstorm" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Sandstorm"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Thunderstorm" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Thunderstorm"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Ancient Inferno Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Ancient Inferno Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Midnight Shadow Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Midnight Shadow Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Mythical Souls Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Mythical Souls Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Winter Wonder Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Winter Wonder Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Golden Master Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Golden Master Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Dragon Legend Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Dragon Legend Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Cybernetic Legends Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Cybernetic Legends Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Swords Skystorm Ultraus Island" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Skystorm Ultraus Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  end
+end)
+
+miscellaneous:AddLabel(" --Buy All Belts--")
+
+local dropdown2;
+dropdown2 = miscellaneous:AddDropdown({"Buy all Belts Ground", "Buy all Belts Astral Island", "Buy all Belts Space Island", "Buy all Belts Tundra Island", "Buy all Belts Eternal Island", "Buy all Belts Sandstorm", "Buy all Belts Thunderstorm", "Buy all Belts Ancient Inferno Island", "Buy all Belts Midnight Shadow Island", "Buy all Belts Mythical Souls Island", "Buy all Belts Winter Wonder Island", "Buy all Belts Golden Master Island", "Buy all Belts Dragon Legend Island", "Buy all Belts Cybernetic Legends Island", "Buy all Belts Skystorm Ultraus Island"}, function(a)
+  if a == "Buy all Belts Ground" then
+    local tbl_main =
+    {
+          "buyAllSwords",
+          "Ground"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Astral Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Astral Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Space Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Space Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Tundra Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Tundra Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Eternal Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Eternal Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Sandstorm" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Sandstorm"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Thunderstorm" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Thunderstorm"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Ancient Inferno Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Ancient Inferno Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Midnight Shadow Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Midnight Shadow Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Mythical Souls Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Mythical Souls Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Winter Wonder Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Winter Wonder Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Golden Master Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Golden Master Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Dragon Legend Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Dragon Legend Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Cybernetic Legends Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Cybernetic Legends Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  elseif a == "Buy all Belts Skystorm Ultraus Island" then
+    local tbl_main =
+    {
+          "buyAllBelts",
+          "Skystorm Ultraus Island"
+    }
+    game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  end
+end)
+
+miscellaneous:AddButton("Buy all possible skills", function()
+  local tbl_main =
+  {
+        "buyAllSkills",
+        "Cybernetic Legends Island"
+  }
+  game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+end)
+
+function Time()
+	local HOUR = math.floor((tick() % 86400) / 3600)
+	local MINUTE = math.floor((tick() % 3600) / 60)
+	local SECOND = math.floor(tick() % 60)
+	local AP = HOUR > 11 and 'PM' or 'AM'
+	HOUR = (HOUR % 12 == 0 and 12 or HOUR % 12)
+	HOUR = HOUR < 10 and '0' .. HOUR or HOUR
+	MINUTE = MINUTE < 10 and '0' .. MINUTE or MINUTE
+	SECOND = SECOND < 10 and '0' .. SECOND or SECOND
+	return HOUR .. ':' .. MINUTE .. ':' .. SECOND .. ' ' .. AP
+end
+
+function CreateLabel(Name, Text)
+	if #game.CoreGui.UILibrary.chatlogs.logpannel.main:GetChildren() >= 2546 then
+		game.CoreGui.UILibrary.chatlogs.logpannel.main:ClearAllChildren()
+	end
+	local alls = 0
+	for i,v in pairs(game.CoreGui.UILibrary.chatlogs.logpannel.main:GetChildren()) do
+		if v then
+			alls = v.Size.Y.Offset + alls
+		end
+		if not v then
+			alls = 0
+		end
+	end
+	local tl = Instance.new('TextLabel', game.CoreGui.UILibrary.chatlogs.logpannel.main)
+	local il = Instance.new('Frame', tl)
+	tl.Name = Name
+	tl.ZIndex = 10
+	tl.Text = Time().." - ["..Name.."]: "..Text
+	tl.Size = UDim2.new(0,322,0,84)
+	tl.BackgroundTransparency = 1
+	tl.BorderSizePixel = 0
+	tl.Font = "SourceSans"
+	tl.Position = UDim2.new(-1,0,0,alls)
+	tl.TextTransparency = 1
+	tl.TextScaled = false
+	tl.TextSize = 14
+	tl.TextWrapped = true
+	tl.TextXAlignment = "Left"
+	tl.TextYAlignment = "Top"
+	il.BackgroundTransparency = 1
+	il.BorderSizePixel = 0
+	il.Size = UDim2.new(0,12,1,0)
+	il.Position = UDim2.new(0,316,0,0)
+	il.ZIndex = 10
+	tl.TextColor3 = Color3.fromRGB(255,255,255)
+	tl.Size = UDim2.new(0,322,0,tl.TextBounds.Y)
+	game.CoreGui.UILibrary.chatlogs.logpannel.main.CanvasPosition = Vector2.new(0,game.CoreGui.UILibrary.chatlogs.logpannel.main.CanvasPosition.Y+tl.TextBounds.Y)
+	local size2 = game.CoreGui.UILibrary.chatlogs.logpannel.main.CanvasSize.Y.Offset
+	tl:TweenPosition(UDim2.new(0,3,0,alls), 'In', 'Quint', 0.5)
+	for i = 0,50 do wait(0.05)
+		tl.TextTransparency = tl.TextTransparency - 0.05
+	end
+	tl.TextTransparency = 0
+end
+
+function writefileExploit()
+	if writefile then
+		return true
+	end
+end
+
+local cooldown = false
+function writefileCooldown(name,data)
+	spawn(function()
+		if not cooldown then
+			cooldown = true
+			writefile(name, data)
+		else
+			repeat wait() until cooldown == false
+			writefileCooldown(name,data)
+		end
+		wait(3)
+		cooldown = false
+	end)
+end
+
+ChatLog = function(plr)
+	plr.Chatted:Connect(function(Message)
+		if settings.logs == true then
+			CreateLabel(plr.Name,Message)
+		end
+	end)
+end
+
+miscellaneous:AddToggle("Chatlogs", function(state)
+  if state then
+    game.CoreGui.UILibrary.chatlogs:TweenPosition(UDim2.new(0.035, 0,0.65, 0), "Out", "Linear", .3, true)
+  else
+    game.CoreGui.UILibrary.chatlogs:TweenPosition(UDim2.new(0.71, 0,0.997, 0), "Out", "Linear", .3, true)
+  end
+end)
+
+game.CoreGui.UILibrary.chatlogs.buttons.enable.MouseButton1Down:connect(function()
+	if settings.logs then
+		settings.logs = false
+		game.CoreGui.UILibrary.chatlogs.buttons.enable.Text = 'Disabled'
+	else
+		settings.logs = true
+		game.CoreGui.UILibrary.chatlogs.buttons.enable.Text = 'Enabled'
+	end
+end)
+
+game.CoreGui.UILibrary.chatlogs.buttons.clear.MouseButton1Down:connect(function()
+	for _, child in pairs(game.CoreGui.UILibrary.chatlogs.logpannel.main:GetChildren()) do
+		child:Destroy()
+	end
+end)
+
+game.CoreGui.UILibrary.chatlogs.buttons.save.MouseButton1Down:connect(function()
+  if writefileExploit() then
+    if #game.CoreGui.UILibrary.chatlogs.logpannel.main:GetChildren() > 0 then
+      local placeName = game:GetService('MarketplaceService'):GetProductInfo(game.PlaceId).Name
+      local writelogs = '-- Epic Hakor Man Chatlogs For "'..placeName..'"\n'
+      for _, child in pairs(game.CoreGui.UILibrary.chatlogs.logpannel.main:GetChildren()) do
+        writelogs = writelogs..'\n'..child.Text
+      end
+      local writelogsFile = tostring(writelogs)
+      local fileext = 0
+      local function nameFile()
+        local file
+        pcall(function() file = readfile(placeName..' Chat Logs ('..fileext..').txt') end)
+        if file then
+          fileext = fileext+1
+          nameFile()
+        else
+          writefileCooldown(placeName..' Chat Logs ('..fileext..').txt', writelogsFile)
+        end
+      end
+      nameFile()
+    end
+  else
+  end
+end)
+
+for _, plr in pairs(game.Players:GetChildren()) do
+	if plr.ClassName == "Player" then
+		ChatLog(plr)
+	end
+end
+
+game.Players.PlayerAdded:Connect(function(plr)
+  ChatLog(plr)
+end)
+
+miscellaneous:AddButton2("Toggle UI Key; ' '",function()
+	game.CoreGui.UILibrary.Miscellaneous.Container.TextButton2.Text = 'Press any Key now'
+	local input = UserInput.InputBegan:wait()
+	if input.UserInputType == Enum.UserInputType.Keyboard then
+		settings.togglekey = tostring(input.KeyCode)
+		game.CoreGui.UILibrary.Miscellaneous.Container.TextButton2.Text = "Toggle UI Key; '"..string.sub(tostring(input.KeyCode), 14).."'"
+	else
+		settings.togglekey = tostring(input.UserInputType)
+		game.CoreGui.UILibrary.Miscellaneous.Container.TextButton2.Text = "Toggle UI Key; '"..string.sub(tostring(input.UserInputType), 20).."'"
+	end
+end)
+
+miscellaneous:AddButton("Rejoin", function()
+  game:GetService('TeleportService'):Teleport(game.PlaceId)
+end)
+
+UserInput.InputBegan:Connect(function(input)
+  if tostring(input.KeyCode) == settings.togglekey or tostring(input.UserInputType) == settings.togglekey then
+    if settings.vis == true then
+      settings.vis = false
+      for _,v in ipairs(game.CoreGui.UILibrary:GetDescendants()) do
+        if v:IsA("Frame") then
+              v.Visible = false
+           end
+         end
+    elseif settings.vis == false then
+      settings.vis = true
+      for _,v in ipairs(game.CoreGui.UILibrary:GetDescendants()) do
+        if v:IsA("Frame") then
+              v.Visible = true
+           end
+         end
+       end
+    end
+end)
