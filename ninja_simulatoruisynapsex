@@ -21,6 +21,9 @@ local settings = {
   autofarmcoins = false;
   logs = false;
   vis = false;
+  autobuysword = false;
+  autobuybelts = false;
+  autocollectsouls = false;
 }
 loadstring(game:HttpGet("https://pastebin.com/raw/xKbbAuc7"))() wait(.1)
 
@@ -44,14 +47,33 @@ farming:AddToggle("AutoFarm", function(state)
     settings.autofarm = false
   end
 end)
-
+--[[
+farming:AddToggle("Light Karma Farm", function()
+  if settings.lightkarmaautofarm == false then
+    settings.lightkarmaautofarm = true
+    workspace.Dddyunknown_45273.HumanoidRootPart.CFrame = CFrame.new(330.128, 30432.824, -16.131)
+    while wait() do
+      local tbl_main =
+      {
+            "swingKatana"
+      }
+      game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+      if settings.lightkarmaautofarm == false then
+        break
+      end
+    end
+  else
+    settings.lightkarmaautofarm = false
+  end
+end)
+]]
 farming:AddToggle("Auto Sell", function(state)
   if settings.autosell == false then
     settings.autosell = true
     while wait() do
-      workspace.sellAreaCircles.sellAreaCircle.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+      workspace.sellAreaCircles.sellAreaCircle13.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
       if settings.autosell == false then
-        workspace.sellAreaCircles.sellAreaCircle.circleInner.CFrame = CFrame.new(77.014, 6.29789, -51.3384)
+        workspace.sellAreaCircles.sellAreaCircle13.circleInner.CFrame = CFrame.new(77.047, 70272.242, 123.682)
         break
       end
     end
@@ -149,7 +171,7 @@ character:AddButton("Reset", function()
   game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0;
 end)
 
-teleports:AddLabel(" -- Teleport Islands --")
+teleports:AddLabel(" -- Islands --")
 
 local dropdown3;
 dropdown3 = teleports:AddDropdown({"Ground" ,"Enchanted Island", "Astral Island", "Mystical Island", "Space Island", "Tundra Island", "Eternal Island", "Sandstorm", "Thunderstorm", "Ancient Inferno Island", "Midnight Shadow Island", "Mythical Souls Island", "Winter Wonder Island", "Golden Master Island", "Dragon Legend Island", "Cybernetic Legends Island", "Skystorm Ultraus Island"}, function(a)
@@ -187,6 +209,43 @@ if a == "Ground" then
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Cybernetic Legends Island"].CFrame
   elseif a == "Skystorm Ultraus Island" then
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Skystorm Ultraus Island"].CFrame
+  end
+end)
+
+teleports:AddLabel(" -- Shops --")
+
+local dropdown4;
+dropdown4 = teleports:AddDropdown({"Ground Shop", "Astral Shop", "Space Shop", "Tundra Shop", "Eternal Shop", "Sandstorm Shop", "Thunderstorm Shop", "Ancient Inferno Shop", "Midnight Shadow Shop", "Mythical Souls Shop", "Winter Wonder Shop", "Golden Master Shop", "Dragon Legend Shop", "Cybernetic Legends Shop", "Skystorm Ultraus Shop"}, function(a)
+if a == "Ground Shop" then
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle"].circleInner.CFrame
+elseif a == "Astral Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle2"].circleInner.CFrame
+  elseif a == "Space Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle3"].circleInner.CFrame
+  elseif a == "Tundra Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle4"].circleInner.CFrame
+  elseif a == "Eternal Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle5"].circleInner.CFrame
+  elseif a == "Sandstorm Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle6"].circleInner.CFrame
+  elseif a == "Thunderstorm Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle7"].circleInner.CFrame
+  elseif a == "Ancient Inferno Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle8"].circleInner.CFrame
+  elseif a == "Midnight Shadow Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle9"].circleInner.CFrame
+  elseif a == "Mythical Souls Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle10"].circleInner.CFrame
+  elseif a == "Winter Wonder Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle11"].circleInner.CFrame
+  elseif a == "Golden Master Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle12"].circleInner.CFrame
+  elseif a == "Dragon Legend Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle13"].circleInner.CFrame
+  elseif a == "Cybernetic Legends Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle14"].circleInner.CFrame
+  elseif a == "Skystorm Ultraus Shop" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle15"].circleInner.CFrame
   end
 end)
 
@@ -456,6 +515,61 @@ dropdown2 = miscellaneous:AddDropdown({"Buy all Belts Ground", "Buy all Belts As
           "Skystorm Ultraus Island"
     }
     game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+  end
+end)
+
+miscellaneous:AddToggle("Auto Collect Souls", function(state)
+  if settings.autocollectsouls == false then
+    settings.autocollectsouls = true
+    workspace.soulPartsFolder.ChildAdded:Connect(function()
+      if settings.autocollectsouls then
+      	local args = {
+      		[1] = "collectSoul",
+      		[2] = workspace.soulPartsFolder.soulPart,
+      	}
+      	game.Players.LocalPlayer.ninjaEvent:FireServer(unpack(args))
+      end
+    end)
+  else
+    settings.autocollectsouls = false
+  end
+end)
+
+miscellaneous:AddToggle("Auto Buy Swords", function(state)
+  if settings.autobuysword == false then
+    settings.autobuysword = true
+    while wait() do
+      local tbl_main =
+      {
+            "buyAllSwords",
+            "Skystorm Ultraus Island"
+      }
+      game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+      if settings.autobuysword == false then
+        break
+      end
+    end
+  else
+    settings.autobuysword = false
+  end
+end)
+
+miscellaneous:AddToggle("Auto Buy Belts", function(state)
+  if settings.autobuybelts == false then
+    settings.autobuybelts = true
+    while wait() do
+      local tbl_main =
+      {
+            "buyAllBelts",
+            "Skystorm Ultraus Island"
+      }
+      game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+      if settings.autobuybelts == false then
+        break
+      end
+    end
+  else
+    settings.autobuybelts = false
   end
 end)
 
