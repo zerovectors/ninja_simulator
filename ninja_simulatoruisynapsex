@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://pastebin.com/raw/AqZYACS7", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zerovectors/framework/master/source", true))()
 local mouse = game.Players.LocalPlayer:GetMouse();
 local UserInput = game:GetService("UserInputService")
 local farming = library:CreateWindow({
@@ -10,9 +10,11 @@ local character = library:CreateWindow({
 local teleports = library:CreateWindow({
   text = "Teleports"
 })
-
 local miscellaneous = library:CreateWindow({
   text = "Miscellaneous"
+})
+local pets = library:CreateWindow({
+  text = "Pet Cheats"
 })
 
 local settings = {
@@ -24,6 +26,30 @@ local settings = {
   autobuysword = false;
   autobuybelts = false;
   autocollectsouls = false;
+  autosellepic = false;
+  autosellrare = false;
+  autosellbasic = false;
+  autosellbeast = false;
+  autosellelite = false;
+  autosellomega = false;
+  autosellunique = false;
+  autoselladvanced = false;
+  autosellinfinity = false;
+  autosellawakened = false;
+  autosellskystorm = false;
+  autocloneepic = false;
+  autoclonerare = false;
+  autoclonebasic = false;
+  autoclonebeast = false;
+  autocloneelite = false;
+  autocloneomega = false;
+  autocloneunique = false;
+  autocloneadvanced = false;
+  autocloneinfinity = false;
+  autocloneawakened = false;
+  autocloneskystorm = false;
+  openeggs = false;
+  autoevolve = false;
 }
 loadstring(game:HttpGet("https://pastebin.com/raw/xKbbAuc7"))() wait(.1)
 
@@ -742,6 +768,522 @@ end)
 
 miscellaneous:AddButton("Rejoin", function()
   game:GetService('TeleportService'):Teleport(game.PlaceId)
+end)
+
+pets:AddLabel("-- Sell --")
+
+pets:AddToggle("AutoSell All Basic", function()
+  if settings.autosellbasic == false then
+    settings.autosellbasic= true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Basic:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellbasic == false then
+        break
+      end
+    end
+  else
+    settings.autosellbasic = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Advanced", function()
+  if settings.autoselladvanced == false then
+    settings.autoselladvanced= true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Advanced:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autoselladvanced == false then
+        break
+      end
+    end
+  else
+    settings.autoselladvanced = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Rare", function()
+  if settings.autosellrare == false then
+    settings.autosellrare= true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Rare:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellrare == false then
+        break
+      end
+    end
+  else
+    settings.autosellrare = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Epic", function()
+  if settings.autosellepic == false then
+    settings.autosellepic= true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Epic:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellepic == false then
+        break
+      end
+    end
+  else
+    settings.autosellepic = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Unique", function()
+  if settings.autosellunique == false then
+    settings.autosellunique= true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Unique:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellunique == false then
+        break
+      end
+    end
+  else
+    settings.autosellunique = false
+  end
+end)
+
+pets:AddToggle("Sell All Omega", function()
+  if settings.autosellomega == false then
+    settings.autosellomega = true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Omega:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellomega == false then
+        break
+      end
+    end
+  else
+    settings.autosellomega = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Elite", function()
+  if settings.autosellelite == false then
+    settings.autosellelite = true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Elite:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellelite == false then
+        break
+      end
+    end
+  else
+    settings.autosellelite = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Skystorm", function()
+  if settings.autosellskystorm == false then
+    settings.autosellskystorm = true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Skystorm:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellskystorm == false then
+        break
+      end
+    end
+  else
+    settings.autosellskystorm = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Awakened", function()
+  if settings.autosellawakened == false then
+    settings.autosellawakened = true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Awakened:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+      if settings.autosellawakened == false then
+        break
+      end
+    end
+  else
+    settings.autosellawakened = false
+  end
+end)
+
+pets:AddToggle("AutoSell All Infinity", function()
+  if settings.autosellinfinity == false then
+    settings.autosellinfinity = true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.Infinity:FindFirstChildOfClass("StringValue"),
+    }
+
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+    if settings.autosellinfinity == false then
+      break
+    end
+    end
+  else
+    settings.autosellinfinity = false
+  end
+end)
+
+pets:AddToggle("AutoSell All BEAST", function()
+  if settings.autosellbeast == false then
+    settings.autosellbeast = true
+    while wait() do
+    local args = {
+        [1] = "sellPet",
+        [2] = game.Players.LocalPlayer.petsFolder.BEAST:FindFirstChildOfClass("StringValue"),
+    }
+
+    game:GetService("ReplicatedStorage").rEvents.sellPetEvent:FireServer(unpack(args))
+    if settings.autosellbeast == false then
+      break
+    end
+    end
+    settings.autosellbeast = false
+  end
+end)
+
+pets:AddLabel("-- Clone --")
+
+pets:AddToggle("AutoClone All Basic", function()
+  if settings.autoclonebasic == false then
+    settings.autoclonebasic= true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Basic:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autoclonebasic == false then
+        break
+      end
+    end
+  else
+    settings.autoclonebasic = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Advanced", function()
+  if settings.autocloneadvanced == false then
+    settings.autocloneadvanced= true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Advanced:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneadvanced == false then
+        break
+      end
+    end
+  else
+    settings.autocloneadvanced = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Rare", function()
+  if settings.autoclonerare == false then
+    settings.autoclonerare= true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Rare:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autoclonerare == false then
+        break
+      end
+    end
+  else
+    settings.autoclonerare = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Epic", function()
+  if settings.autocloneepic == false then
+    settings.autocloneepic= true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Epic:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneepic == false then
+        break
+      end
+    end
+  else
+    settings.autocloneepic = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Unique", function()
+  if settings.autocloneunique == false then
+    settings.autocloneunique= true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Unique:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneunique == false then
+        break
+      end
+    end
+  else
+    settings.autocloneunique = false
+  end
+end)
+
+pets:AddToggle("Sell All Omega", function()
+  if settings.autocloneomega == false then
+    settings.autocloneomega = true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Omega:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneomega == false then
+        break
+      end
+    end
+  else
+    settings.autocloneomega = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Elite", function()
+  if settings.autocloneelite == false then
+    settings.autocloneelite = true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Elite:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneelite == false then
+        break
+      end
+    end
+  else
+    settings.autocloneelite = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Skystorm", function()
+  if settings.autocloneskystorm == false then
+    settings.autocloneskystorm = true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Skystorm:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneskystorm == false then
+        break
+      end
+    end
+  else
+    settings.autocloneskystorm = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Awakened", function()
+  if settings.autocloneawakened == false then
+    settings.autocloneawakened = true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Awakened:FindFirstChildOfClass("StringValue"),
+    }
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+      if settings.autocloneawakened == false then
+        break
+      end
+    end
+  else
+    settings.autocloneawakened = false
+  end
+end)
+
+pets:AddToggle("AutoClone All Infinity", function()
+  if settings.autocloneinfinity == false then
+    settings.autocloneinfinity = true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.Infinity:FindFirstChildOfClass("StringValue"),
+    }
+
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+    if settings.autocloneinfinity == false then
+      break
+    end
+    end
+  else
+    settings.autocloneinfinity = false
+  end
+end)
+
+pets:AddToggle("AutoClone All BEAST", function()
+  if settings.autoclonebeast == false then
+    settings.autoclonebeast = true
+    while wait() do
+    local args = {
+        [1] = "clonePet",
+        [2] = game.Players.LocalPlayer.petsFolder.BEAST:FindFirstChildOfClass("StringValue"),
+    }
+
+    game:GetService("ReplicatedStorage").rEvents.petCloneEvent:FireServer(unpack(args))
+    if settings.autoclonebeast == false then
+      break
+    end
+    end
+    settings.autoclonebeast = false
+  end
+end)
+
+pets:AddToggle("Auto Evolve Pets", function()
+  if settings.autoevolve == false then
+    settings.autoevolve = true
+    while wait() do
+      local args = {
+          [1] = "autoEvolvePets",
+      }
+      game:GetService("ReplicatedStorage").rEvents.autoEvolveRemote:InvokeServer(unpack(args))
+      if settings.autoevolve == false then
+        break
+      end
+    end
+  else
+    settings.autoevolve = false
+  end
+end)
+
+local dropdown4;
+dropdown4 = pets:AddDropdown2({"Open Astral Crystal", "Open Blue Crystal", "Open Enchanted Crystal", "Open Eternal Crystal", "Open Frozen Crystal", "Open Galaxy Crystal", "Open Golden Crystal", "Open Inferno Crystal", "Open Master Secrets Crystal", "Open Midnight Chaos Crystal", "Open Purple Crystal", "Open Storm Crystal", "Open Thunder Crystal"}, function(a)
+end)
+
+pets:AddToggle("Open Eggs", function()
+  local a = game.CoreGui.UILibrary["Pet Cheats"].Container.TextLabel2.Text
+  if settings.openeggs == false then
+    settings.openeggs = true
+    while wait() do
+      if game.CoreGui.UILibrary["Pet Cheats"].Container.TextLabel2.Text == "Open Astral Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Astral Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Blue Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Blue Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Enchanted Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Enchanted Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Eternal Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Eternal Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Frozen Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Frozen Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Galaxy Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Galaxy Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Golden Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Golden Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Inferno Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Inferno Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Master Secrets Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Master Secrets Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Midnight Chaos Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Midnight Chaos Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Purple Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Purple Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Storm Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Storm Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      elseif a == "Open Thunder Crystal" then
+        local args = {
+            [1] = "openCrystal",
+            [2] = "Thunder Crystal",
+        }
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer(unpack(args))
+      end
+      if settings.openeggs == false then
+        break
+      end
+    end
+  else
+    settings.openeggs = false
+  end
 end)
 
 local vu = game:GetService("VirtualUser")
