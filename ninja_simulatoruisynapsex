@@ -25,7 +25,7 @@ local settings = {
 loadstring(game:HttpGet("https://pastebin.com/raw/xKbbAuc7"))() wait(.1)
 
 local credits = library:CreateWindow({text='Credits'})
-credits:AddLabel("Credits\nInori: Dragging\nwally: UI\nsmail: Ideas")
+credits:AddLabel("Credits\nInori: Dragging\nwally: UI\nsmail: Ideas\nLogre#2373: Anti-Afk")
 
 farming:AddToggle("AutoFarm", function(state)
   if settings.autofarm == false then
@@ -88,6 +88,41 @@ farming:AddToggle("Remove coin effects shit", function(state)
     game.Players.LocalPlayer.PlayerGui.statEffectsGui.Enabled = true
     game.Players.LocalPlayer.PlayerGui:WaitForChild("maxNinjitsuMenu").Parent = game.Players.LocalPlayer.PlayerGui.gameGui
   end
+end)
+
+farming:AddButton("Collect All Chests", function(state)
+  local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.ancientChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.goldenZenChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.goldenChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.legendsChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.eternalChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.enchantedChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.magmaChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.midnightShadowChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.mythicalChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.enchantedChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.saharaChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.skystormMastersChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.thunderChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.ultraNinjitsuChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.wonderChest.circleInner.CFrame
+  wait(.1)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 end)
 
 character:AddToggle("Super Speed", function(state)
@@ -158,38 +193,46 @@ end)
 teleports:AddButton("Unlock All Islands", function()
   local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Enchanted Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Astral Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mystical Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Space Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Tundra Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Eternal Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Sandstorm"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Thunderstorm"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Ancient Inferno Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Midnight Shadow Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mythical Souls Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Winter Wonder Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Golden Master Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Dragon Legend Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Cybernetic Legends Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Skystorm Ultraus Island"].CFrame
-wait(.3)
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Astral Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mystical Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Space Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Tundra Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Eternal Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Sandstorm"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Thunderstorm"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Ancient Inferno Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Midnight Shadow Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Mythical Souls Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Winter Wonder Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Golden Master Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Dragon Legend Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Cybernetic Legends Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.islandUnlockParts["Skystorm Ultraus Island"].CFrame
+    wait(.3)
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+
+teleports:AddButton("Evil Karma Chest", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.evilKarmaChest.circleInner.CFrame
+end)
+
+teleports:AddButton("Good Karma Chest", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.lightKarmaChest.circleInner.CFrame
 end)
 
 miscellaneous:AddLabel(" --Buy All Swords--")
@@ -585,6 +628,13 @@ end)
 
 miscellaneous:AddButton("Rejoin", function()
   game:GetService('TeleportService'):Teleport(game.PlaceId)
+end)
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
 UserInput.InputBegan:Connect(function(input)
