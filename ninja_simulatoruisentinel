@@ -17,6 +17,9 @@ local miscellaneous = library:CreateWindow({
 local pets = library:CreateWindow({
   text = "Pet Cheats"
 })
+local changelog = library:CreateWindow({
+  text = "View Changelog"
+})
 
 local settings = {
   autofarm = false;
@@ -24,6 +27,9 @@ local settings = {
   autofarmcoins = false;
   logs = false;
   vis = false;
+  vfly = false;
+  noclip = false;
+  flykey = "Enum.UserInputType.F";
   autobuysword = false;
   autobuybelts = false;
   autocollectsouls = false;
@@ -74,26 +80,117 @@ farming:AddToggle("AutoFarm", function(state)
     settings.autofarm = false
   end
 end)
---[[
-farming:AddToggle("Light Karma Farm", function()
-  if settings.lightkarmaautofarm == false then
-    settings.lightkarmaautofarm = true
-    workspace.Dddyunknown_45273.HumanoidRootPart.CFrame = CFrame.new(330.128, 30432.824, -16.131)
-    while wait() do
-      local tbl_main =
-      {
-            "swingKatana"
-      }
-      game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
-      if settings.lightkarmaautofarm == false then
-        break
-      end
-    end
-  else
-    settings.lightkarmaautofarm = false
-  end
-end)
-]]
+
+vflyspeed = 1
+vehicleflyspeed = 1
+function sFLY(vfly)
+	repeat wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart') and game.Players.LocalPlayer.Character:FindFirstChild('Humanoid')
+	repeat wait() until mouse
+
+	local T = game.Players.LocalPlayer.Character.HumanoidRootPart
+	local CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+	local lCONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+	local SPEED = 0
+
+	local function FLY()
+		settings.vfly = true
+		local BG = Instance.new('BodyGyro', T)
+		local BV = Instance.new('BodyVelocity', T)
+		BG.P = 9e4
+		BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+		BG.cframe = T.CFrame
+		BV.velocity = Vector3.new(0, 0, 0)
+		BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+		spawn(function()
+			repeat wait()
+			if not vfly then
+				game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = true
+			end
+			if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+				SPEED = 50
+			elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+				SPEED = 0
+			end
+			if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
+				BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+				lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+			elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and (CONTROL.Q + CONTROL.E) == 0 and SPEED ~= 0 then
+				BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+			else
+				BV.velocity = Vector3.new(0, 0, 0)
+			end
+			BG.cframe = workspace.CurrentCamera.CoordinateFrame
+			until not settings.vfly
+			CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+			lCONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+			SPEED = 0
+			BG:destroy()
+			BV:destroy()
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
+		end)
+	end
+	mouse.KeyDown:connect(function(KEY)
+		if KEY:lower() == 'w' then
+			if vfly then
+				CONTROL.F = vehicleflyspeed
+			else
+				CONTROL.F = vflyspeed
+			end
+		elseif KEY:lower() == 's' then
+			if vfly then
+				CONTROL.B = - vehicleflyspeed
+			else
+				CONTROL.B = - vflyspeed
+			end
+		elseif KEY:lower() == 'a' then
+			if vfly then
+				CONTROL.L = - vehicleflyspeed
+			else
+				CONTROL.L = - vflyspeed
+			end
+		elseif KEY:lower() == 'd' then
+			if vfly then
+				CONTROL.R = vehicleflyspeed
+			else
+				CONTROL.R = vflyspeed
+            end
+        elseif KEY:lower() == 'e' then
+            if vfly then
+                CONTROL.Q = vehicleflyspeed*2
+            else
+                CONTROL.Q = vflyspeed*2
+            end
+        elseif KEY:lower() == 'q' then
+            if vfly then
+                CONTROL.E = -vehicleflyspeed*2
+            else
+                CONTROL.E = -vflyspeed*2
+            end
+		end
+	end)
+	mouse.KeyUp:connect(function(KEY)
+		if KEY:lower() == 'w' then
+			CONTROL.F = 0
+		elseif KEY:lower() == 's' then
+			CONTROL.B = 0
+		elseif KEY:lower() == 'a' then
+			CONTROL.L = 0
+		elseif KEY:lower() == 'd' then
+            CONTROL.R = 0
+        elseif KEY:lower() == 'e' then
+            CONTROL.Q = 0
+        elseif KEY:lower() == 'q' then
+            CONTROL.E = 0
+		end
+	end)
+	FLY()
+end
+
+function NOFLY()
+	settings.vfly = false
+	game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
+end
+
 farming:AddToggle("Auto Sell", function(state)
   if settings.autosell == false then
     settings.autosell = true
@@ -109,7 +206,7 @@ farming:AddToggle("Auto Sell", function(state)
   end
 end)
 
-farming:AddToggle("Farm Coins and Chi", function(state)
+farming:AddToggle("Collect Coins and Chi", function(state)
   if settings.autofarmcoins == false then
     settings.autofarmcoins = true
     local charpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -194,6 +291,35 @@ character:AddBox("JumpPower", function(object, focus)
   end
 end)
 
+character:AddToggle("Fly", function(state)
+  if state then
+    settings.vfly = true
+    sFLY()
+  else
+    settings.vfly = false;
+    NOFLY()
+  end
+end)
+
+character:AddToggle("Noclip", function(state)
+  if state then
+    local function NoclipLoop()
+      if settings.noclip == false and game.Players.LocalPlayer.Character ~= nil then
+          for _, child in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+          if child:IsA("BasePart") and child.CanCollide == true then
+              child.CanCollide = false
+          end
+        end
+      end
+    end
+    Noclipping = game:GetService('RunService').Stepped:connect(NoclipLoop)
+  else
+    if Noclipping then
+      Noclipping:Disconnect()
+    end
+  end
+end)
+
 character:AddButton("Reset", function()
   game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0;
 end)
@@ -273,6 +399,36 @@ elseif a == "Astral Shop" then
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle14"].circleInner.CFrame
   elseif a == "Skystorm Ultraus Shop" then
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.shopAreaCircles["shopAreaCircle15"].circleInner.CFrame
+  end
+end)
+
+teleports:AddLabel("-- Evil Karma Areas --")
+
+local dropdown6;
+dropdown6 = teleports:AddDropdown({"Sword Of Anicents", "Fallen Infinity Blade", "Tornado", "Lava Pit"}, function(a)
+  if a == "Sword Of Anicents" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(627.359, 82.206, 2429.487)
+  elseif a == "Fallen Infinity Blade" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1875.967, 82.206, -6806.41)
+  elseif a == "Tornado" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(330.128, 16921.822, -16.131)
+  elseif a == "Lava Pit" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-119.522, 13002.264, 274.569)
+  end
+end)
+
+teleports:AddLabel("-- Good Karma Areas --")
+
+local dropdown7;
+dropdown7 = teleports:AddDropdown({"Sword Of Legends", "Mystical Waters", "Zen Master's Blade", "Elemental Tornado"}, function(a)
+  if a == "Sword Of Legends" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1848.478, 82.206, -137.431)
+  elseif a == "Mystical Waters" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(354.478, 8874.264, 116.569)
+  elseif a == "Zen Master's Blade" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5041.177, 82.206, 1614.749)
+  elseif a == "Elemental Tornado" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(330.128, 30432.824, -16.131)
   end
 end)
 
@@ -600,6 +756,14 @@ miscellaneous:AddToggle("Auto Buy Belts", function(state)
   end
 end)
 
+miscellaneous:AddToggle("Chatlogs", function(state)
+  if state then
+    game.CoreGui.UILibrary.chatlogs:TweenPosition(UDim2.new(0.035, 0,0.65, 0), "Out", "Linear", .3, true)
+  else
+    game.CoreGui.UILibrary.chatlogs:TweenPosition(UDim2.new(0.71, 0,0.997, 0), "Out", "Linear", .3, true)
+  end
+end)
+
 miscellaneous:AddButton("Buy all possible skills", function()
   local tbl_main =
   {
@@ -607,6 +771,18 @@ miscellaneous:AddButton("Buy all possible skills", function()
         "Cybernetic Legends Island"
   }
   game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(unpack(tbl_main))
+end)
+
+miscellaneous:AddButton3("Toggle Fly Key; ' '",function()
+	game.CoreGui.UILibrary.Miscellaneous.Container.TextButton3.Text = 'Press any Key now'
+	local input = UserInput.InputBegan:wait()
+	if input.UserInputType == Enum.UserInputType.Keyboard then
+		settings.flykey = tostring(input.KeyCode)
+		game.CoreGui.UILibrary.Miscellaneous.Container.TextButton3.Text = "Toggle Fly Key; '"..string.sub(tostring(input.KeyCode), 14).."'"
+	else
+		settings.flykey = tostring(input.UserInputType)
+		game.CoreGui.UILibrary.Miscellaneous.Container.TextButton3.Text = "Toggle Fly Key; '"..string.sub(tostring(input.UserInputType), 20).."'"
+	end
 end)
 
 function Time()
@@ -694,14 +870,6 @@ ChatLog = function(plr)
 		end
 	end)
 end
-
-miscellaneous:AddToggle("Chatlogs", function(state)
-  if state then
-    game.CoreGui.UILibrary.chatlogs:TweenPosition(UDim2.new(0.035, 0,0.65, 0), "Out", "Linear", .3, true)
-  else
-    game.CoreGui.UILibrary.chatlogs:TweenPosition(UDim2.new(0.71, 0,0.997, 0), "Out", "Linear", .3, true)
-  end
-end)
 
 game.CoreGui.UILibrary.chatlogs.buttons.enable.MouseButton1Down:connect(function()
 	if settings.logs then
@@ -1294,6 +1462,8 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
     vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
+changelog:AddLabel("V2.3 ( CURRENT VERSION )\n + Added Fly + Noclip\n + Added Fly Hotkey\n+ Added Evil/Good Karma Areas\n + Added Pets Tab\n + Added Auto Buy Swords/Belts\nV1.6\n + Added Remove Coin effect shit\n + Added Collect All chests\n + Added Buy possible skills\n + Added Chatlogs\nV1.3\n + Released UI\n + Added Teleports Tab\nV1\n + Created UI")
+
 UserInput.InputBegan:Connect(function(input)
   if tostring(input.KeyCode) == settings.togglekey or tostring(input.UserInputType) == settings.togglekey then
     if settings.vis == true then
@@ -1311,5 +1481,13 @@ UserInput.InputBegan:Connect(function(input)
            end
          end
        end
+     elseif tostring(input.KeyCode) == settings.flykey or tostring(input.UserInputType) == settings.flykey then
+        if settings.vfly == false then
+          settings.vfly = true
+          sFLY()
+        else
+          settings.vfly = true
+          NOFLY()
+        end
     end
 end)
